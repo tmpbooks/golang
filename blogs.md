@@ -1,3 +1,5 @@
+go build -gcflags=-B main.go //-B禁用边界检查
+
 利用build tags達到不同的build config
 http://www.evanlin.com/go-build-config-ldflags/
 
