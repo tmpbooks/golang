@@ -1,3 +1,6 @@
+利用build tags達到不同的build config
+http://www.evanlin.com/go-build-config-ldflags/
+
 Bounds Checking Elimination  Go1.7中的边界检查消除
 https://my.oschina.net/u/2004526/blog/879838
 https://docs.google.com/document/d/1vdAEAjYdzjnPA9WDOQ1e4e05cYVMpqSxJYZT33Cqw2g/edit#heading=h.ywknbkyeha6d
