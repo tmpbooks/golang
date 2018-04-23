@@ -1,3 +1,10 @@
+Bounds Checking Elimination  Go1.7中的边界检查消除
+https://my.oschina.net/u/2004526/blog/879838
+https://docs.google.com/document/d/1vdAEAjYdzjnPA9WDOQ1e4e05cYVMpqSxJYZT33Cqw2g/edit#heading=h.ywknbkyeha6d
+
+Five things that make Go fast
+https://dave.cheney.net/2014/06/07/five-things-that-make-go-fast
+
 Node之父Ryan Dahl：我不想被定义 http://www.infoq.com/cn/news/2017/09/Node-Ryan-Dahl Nodejs 创始人眼中的 Go https://studygolang.com/topics/3387 https://www.mappingthejourney.com/single-post/2017/08/31/episode-8-interview-with-ryan-dahl-creator-of-nodejs/
 
 Go的50度灰：Golang新开发者要注意的陷阱和常见错误
