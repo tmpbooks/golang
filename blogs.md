@@ -1,3 +1,9 @@
+Go的50度灰：Golang新开发者要注意的陷阱和常见错误
+http://colobu.com/2015/09/07/gotchas-and-common-mistakes-in-go-golang/
+
+你见过哪些令你瞠目结舌的Golang代码技巧
+https://www.zhihu.com/question/39808172
+
 beego web ... https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md
 
 Go在谷歌：以软件工程为目的的语言设计 https://www.oschina.net/translate/go-at-google-language-design-in-the-service-of-software-engineering
@@ -16,3 +22,4 @@ mgo重连 https://yangchenglong11.github.io/2017/04/03/mgo-%E6%96%AD%E7%BA%BF%E9
   url+=id;
   https://cnodejs.org/topic/55b1a188692e0e7706b36632
 }
+
