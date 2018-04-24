@@ -1,3 +1,6 @@
+Go 1.10中值得关注的几个变化
+https://tonybai.com/2018/02/17/some-changes-in-go-1-10/
+
 go build -gcflags=-B main.go //-B禁用边界检查
 
 利用build tags達到不同的build config
