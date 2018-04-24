@@ -1,3 +1,9 @@
+如何看待GO语言的新GC(TOC)?
+https://www.zhihu.com/question/47796464
+
+引入SSA之后，Go 语言的执行性能将明显提升
+https://www.oschina.net/news/71489/go-ssa
+
 Go 1.10中值得关注的几个变化
 https://tonybai.com/2018/02/17/some-changes-in-go-1-10/
 
