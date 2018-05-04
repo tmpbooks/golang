@@ -9,7 +9,7 @@ https://tonybai.com/2018/02/17/some-changes-in-go-1-10/
 
 go build -gcflags=-B main.go //-B禁用边界检查
 
-利用build tags達到不同的build config
+利用build tags达到不同的build config
 http://www.evanlin.com/go-build-config-ldflags/
 
 Bounds Checking Elimination  Go1.7中的边界检查消除
