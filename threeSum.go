@@ -1,32 +1,32 @@
-//https://leetcode-cn.com/problems/3sum/description/
-
 func threeSum(nums []int) [][]int {
 	ret := [][]int{}
 
+	idxcont := 0
 	newnums := []int{}
-	flag := false
+	//flag := false
 	nummap := map[int]map[int]bool{}
 	for i, v := range nums {
 		if _, ok := nummap[v]; !ok {
 			nummap[v] = map[int]bool{}
 		}
 		if len(nummap[v]) < 3 {
-			nummap[v][i] = true
+			nummap[v][i-idxcont] = true
 			newnums = append(newnums, v)
 		} else {
-			flag = true
+			idxcont++
 		}
 	}
-	if flag {
-		nums = newnums
-		nummap = map[int]map[int]bool{}
-		for i, v := range nums {
-			if _, ok := nummap[v]; !ok {
-				nummap[v] = map[int]bool{}
-			}
-			nummap[v][i] = true
-		}
-	}
+	nums = newnums
+	// if flag {
+	// 	nums = newnums
+	// 	nummap = map[int]map[int]bool{}
+	// 	for i, v := range nums {
+	// 		if _, ok := nummap[v]; !ok {
+	// 			nummap[v] = map[int]bool{}
+	// 		}
+	// 		nummap[v][i] = true
+	// 	}
+	// }
 	sum := 0
 	hash := map[[3]int]bool{}
 	for i := 0; i < len(nums); i++ {
