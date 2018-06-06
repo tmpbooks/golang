@@ -1,22 +1,26 @@
 package main
 
+import "sync"
+
 func threeSum(nums []int) [][]int {
 	ret := [][]int{}
 
-	// newnums := []int{}
-	// flag := false
-	// nummap := map[int]map[int]bool{}
-	// for i, v := range nums {
-	// 	if _, ok := nummap[v]; !ok {
-	// 		nummap[v] = map[int]bool{}
-	// 	}
-	// 	if len(nummap[v]) < 3 {
-	// 		nummap[v][i] = true
-	// 		newnums = append(newnums, v)
-	// 	} else {
-	// 		flag = true
-	// 	}
-	// }
+	idxcont := 0
+	newnums := []int{}
+	//flag := false
+	nummap := map[int]map[int]bool{}
+	for i, v := range nums {
+		if _, ok := nummap[v]; !ok {
+			nummap[v] = map[int]bool{}
+		}
+		if len(nummap[v]) < 3 {
+			nummap[v][i-idxcont] = true
+			newnums = append(newnums, v)
+		} else {
+			idxcont++
+		}
+	}
+	nums = newnums
 	// if flag {
 	// 	nums = newnums
 	// 	nummap = map[int]map[int]bool{}
@@ -27,15 +31,28 @@ func threeSum(nums []int) [][]int {
 	// 		nummap[v][i] = true
 	// 	}
 	// }
-	// sum := 0
+	wg := sync.WaitGroup{}
+	mtx := sync.Mutex{}
+
 	hash := map[[3]int]bool{}
-	for i := 0; i < len(nums); i++ {
-		for j := 0; j < len(nums); j++ {
-			if j != i {
-				for k := 0; k < len(nums); k++ {
-					if k != i && k != j {
-						if nums[i]+nums[j]+nums[k] == 0 {
-							tmp := [3]int{nums[i], nums[j], nums[k]}
+
+	goj := func(b, e int) {
+		sum := 0
+		defer wg.Done()
+		for i := 0; i < len(nums); i++ {
+			for j := b; j < e; j++ {
+				if i != j {
+					sum = nums[i] + nums[j]
+					n := 0
+					if v, ok := nummap[-sum]; ok {
+						if v[i] {
+							n++
+						}
+						if v[j] {
+							n++
+						}
+						if len(v) > n {
+							tmp := [3]int{-sum, nums[i], nums[j]}
 							if tmp[0] > tmp[1] {
 								tmp[0], tmp[1] = tmp[1], tmp[0]
 							}
@@ -45,7 +62,12 @@ func threeSum(nums []int) [][]int {
 									tmp[0], tmp[1] = tmp[1], tmp[0]
 								}
 							}
-							hash[tmp] = true
+							mtx.Lock()
+							if _, ok := hash[tmp]; !ok {
+								ret = append(ret, tmp[:])
+								hash[tmp] = true
+							}
+							mtx.Unlock()
 						}
 					}
 				}
@@ -53,12 +75,15 @@ func threeSum(nums []int) [][]int {
 		}
 	}
 
-	for k, _ := range hash {
-		ret = append(ret, k[:])
-	}
+	cornum := 2
+	wg.Add(cornum)
+	go goj(0, len(nums)/2)
+	go goj(len(nums)/2, len(nums))
 
+	wg.Wait()
 	return ret
 }
+
 
 func main() {
 
